@@ -1,11 +1,7 @@
 #https://aprendeconalf.es/docencia/python/ejercicios/funciones/
-#??Falta terminar porque ahora mismo no esta funcionando
-lista = input("Dame una lista de numeros separados por comas: ")
-total = 0
+lista = [1.2, 2.9, 3.7, 0.4, 5]
 def media(l):
-    for i in l:
-        total = total + i
-    media = total / len(l)
+    media = sum(l)/len(l)
     return media
 print("La media de tu lista es: ")    
-print(media(lista.split(",")))
+print(media(lista))
