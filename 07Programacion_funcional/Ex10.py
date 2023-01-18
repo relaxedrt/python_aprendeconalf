@@ -12,21 +12,21 @@ def calcprecios(l):
     for i in l:
         if i["zona"] == "A":
             p = ((i["metros"] * 1000) + (i["habitaciones"]*5000) + (int(i["garaje"])*15000)) * (1 - (2023 - i["año"]) / 100)
-            lp.append(p)
+            i["precio"] = p
+            lp.append(i)
         if i["zona"] == "B":
             p = (((i["metros"] * 1000) + (i["habitaciones"]*5000) + (int(i["garaje"])*15000)) * (1 - (2023 - i["año"]) / 100) ) * 1.5 
-            lp.append(p)
+            i["precio"] = p
+            lp.append(i)
     return lp
-def nuevalista(l, p):
-    lp = calcprecios(l)
+def busqueda(l, p):
     nl = []
-    for i in lp:
-        if i <= p:
-            nl.append(l[lp.index(i)])
-            #nl[nl.index(l[lp.index(i)])]["precio"] = i
-            #print(nl[nl.index(l[lp.index(i)])])
+    for i in l:
+        if i["precio"] <= p:
+            nl.append(i)
     return nl
+
     
 
 
-print(nuevalista(pisos, 100000))
+print(busqueda(calcprecios(pisos), 100000))
