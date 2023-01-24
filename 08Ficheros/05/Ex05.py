@@ -4,10 +4,8 @@ url = "https://ec.europa.eu/eurostat/estat-navtree-portlet-prod/BulkDownloadList
 pais = input("Que país quieres investigar el PIB?: ")
 def checkpib(p):
     f = request.urlopen(url)
-    data = f.read()
-    #linea = f.readlines()
-    for linea in data:
-        if p in linea:
-            return linea
-            
+    lineas = f.readlines()
+    for l in lineas:
+        if p in str(l):
+            return f"{str(lineas[0])}\n{l}"
 print(checkpib(pais))
