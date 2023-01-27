@@ -17,18 +17,18 @@ def examenesyasist(f):
                 dic["Asistencia"] = r[2]
                 #####################################
                 if int(r[3]) > 10:
-                    dic["Parcial1"] = float(r[3])/10
+                    dic["Parcial1"] = float(r[3])/100
                 else:
                     dic["Parcial1"] = float(r[3])
                 #####################################
                 if int(r[4]) > 10:
-                    dic["Parcial2"] = float(r[4])/10
+                    dic["Parcial2"] = float(r[4])/100
                 else:
                     dic["Parcial2"] = float(r[4])
                 #####################################
                 if r[5] != "":
                     if int(r[5]) > 10:
-                        dic["Ordinario1"] = float(r[5])/10
+                        dic["Ordinario1"] = float(r[5])/100
                     else:
                         dic["Ordinario1"] = float(r[5])
                 else:
@@ -36,7 +36,7 @@ def examenesyasist(f):
                 #####################################
                 if r[6] != "":
                     if int(r[6]) > 10:
-                        dic["Ordinario2"] = float(r[6])/10
+                        dic["Ordinario2"] = float(r[6])/100
                     else:
                         dic["Ordinario2"] = float(r[6])
                 else:
@@ -44,15 +44,15 @@ def examenesyasist(f):
                 #####################################
                 if r[7] != "":
                     if int(r[7]) > 10:
-                        dic["Practicas"] = float(r[7])/10
+                        dic["Practicas"] = float(r[7])/100
                     else:
                         dic["Practicas"] = float(r[7])
                 else:
                     dic["Practicas"] = 0.0
                 #####################################
                 if r[8] != "":
-                    if int(r[7]) > 10:
-                        dic["OrdinarioPracticas"] = float(r[8])/10
+                    if int(r[8]) > 10:
+                        dic["OrdinarioPracticas"] = float(r[8])/100
                     else:
                         dic["OrdinarioPracticas"] = float(r[8])
                 else:
@@ -81,7 +81,22 @@ def notafinal(l):
         newlist.append(i)
     return newlist
 
-        
+def suspapro(l):
+    a = []
+    s = []
+    for i in l:
+        x = int(i["Asistencia"].replace("%",""))
+        if i["NotaFinal"] >= 5:
+            if i["Practicas"] >= 4:
+                if i["Parcial2"] >= 4:
+                    if i["Parcial1"] >= 4:
+                        if x > 75:
+                            a.append(i["Apellidos"])
+        else:
+            s.append(i["Apellidos"])
+    print(f"Los aprobados son: {a}")
+    print(f"Los suspensos son: {s}")
 
 
-print(notafinal(examenesyasist(file)))
+#print(notafinal(examenesyasist(file)))
+suspapro((notafinal(examenesyasist(file))))
