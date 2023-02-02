@@ -8,10 +8,13 @@ client.connect("192.168.0.1",0,0)
 #Checkeamos la conexión, nos devolvera true si estamos conectados
 client.get_connected()
 #Leemos los datos del DB1 del byte 0 al 3 (Primera doble palabra)
-db = client.db_read(1,0,3)
+db = client.db_read(1,0,4)
+#Escribimos en el db un real
+util.set_real(db, 0,2.1)
 #Leemos el real que hay en esta primera doblepalabra
 t = util.get_real(db, 0)
 #Leemos el primer booleano que hay en esta primera doble palabra
 b = util.get_bool(db,0,0)
 print(t)
+print(b)
 
