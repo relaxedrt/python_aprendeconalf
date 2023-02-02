@@ -12,7 +12,7 @@ tk.set_default_color_theme("dark-blue")
 
 #TITULO Y TAMAÑO
 app = tk.CTk()
-app.geometry("300x480")
+app.geometry("300x400")
 app.title("Listin telefonico")
 
 #TEXTOS INDICADORES
@@ -71,16 +71,16 @@ def borrar():
     deletenum(nombre.get())
 #BOTONES
 checkeo = tk.CTkButton(master = app, text="Comprobar existencia Listin", command = checkexist)
-checkeo.place(relx=0.5, rely=0.1, anchor=tkinter.CENTER)
+checkeo.place(relx=0.5, rely=0.075, anchor=tkinter.CENTER)
 
 consulta = tk.CTkButton(master = app, text="Consultar numero con nombre", command = consultar)
-consulta.place(relx=0.5, rely=0.2, anchor=tkinter.CENTER)
+consulta.place(relx=0.5, rely=0.175, anchor=tkinter.CENTER)
 
 nuevonumero = tk.CTkButton(master = app, text="Agregar numero", command = nuevonumero)
-nuevonumero.place(relx=0.5, rely=0.3, anchor=tkinter.CENTER)
+nuevonumero.place(relx=0.5, rely=0.275, anchor=tkinter.CENTER)
 
 borrarnumero = tk.CTkButton(master = app, text="Borrar numero", command = borrar)
-borrarnumero.place(relx=0.5, rely=0.4, anchor=tkinter.CENTER)
+borrarnumero.place(relx=0.5, rely=0.375, anchor=tkinter.CENTER)
 
 #EJECUTAR APLICACION
 app.mainloop()
