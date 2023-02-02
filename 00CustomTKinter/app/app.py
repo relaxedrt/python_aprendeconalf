@@ -2,14 +2,39 @@
 import tkinter
 import customtkinter as tk
 
+#DECLARACION DE VARIABLE FILE
+file = "00CustomTKinter/app/listin.txt"
+
+#APLICACION TKINTER
+#COLORES
 tk.set_appearance_mode("dark")
 tk.set_default_color_theme("dark-blue")
 
+#TITULO Y TAMAÑO
 app = tk.CTk()
 app.geometry("300x480")
 app.title("Listin telefonico")
 
-file = "00CustomTKinter/app/listin.txt"
+#TEXTOS INDICADORES
+textbox1 = tk.CTkLabel(master=app, text="Nombre")
+textbox1.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+
+textbox2 = tk.CTkLabel(master=app, text="Numero")
+textbox2.place(relx=0.5, rely=0.7, anchor=tkinter.CENTER)
+#INPUTS
+nombre = tk.CTkEntry(master=app,
+                    width=120,
+                    height=25,
+                    corner_radius=10)
+nombre.place(relx=0.5, rely=0.6, anchor=tkinter.CENTER)
+
+numero = tk.CTkEntry(master=app,
+                    width=120,
+                    height=25,
+                    corner_radius=10)
+numero.place(relx=0.5, rely=0.8, anchor=tkinter.CENTER)
+
+#FUNCIONES
 def checkexist():
     try:
         f = open(file, "r")
@@ -38,34 +63,12 @@ def deletenum(nombre):
     a = open(file, "w")
     for i in lineas:
         a.write(i)
+def nuevonumero():
+    newnum(nombre.get(),numero.get())
 def consultar():
-    print(name)
-    consult(name)
-def newnumero():
-    newnum(name, numb)
-def deletenumero():
-    newnum(name)
-#TEXTOS INDICADORES
-textbox1 = tk.CTkLabel(master=app, text="Nombre")
-textbox1.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
-
-textbox2 = tk.CTkLabel(master=app, text="Numero")
-textbox2.place(relx=0.5, rely=0.7, anchor=tkinter.CENTER)
-#INPUTS
-nombre = tk.CTkEntry(master=app,
-                    width=120,
-                    height=25,
-                    corner_radius=10)
-nombre.place(relx=0.5, rely=0.6, anchor=tkinter.CENTER)
-name = nombre.get()
-
-numero = tk.CTkEntry(master=app,
-                    width=120,
-                    height=25,
-                    corner_radius=10)
-numero.place(relx=0.5, rely=0.8, anchor=tkinter.CENTER)
-numb = numero.get()
-
+    consult(nombre.get())
+def borrar():
+    deletenum(nombre.get())
 #BOTONES
 checkeo = tk.CTkButton(master = app, text="Comprobar existencia Listin", command = checkexist)
 checkeo.place(relx=0.5, rely=0.1, anchor=tkinter.CENTER)
@@ -73,10 +76,10 @@ checkeo.place(relx=0.5, rely=0.1, anchor=tkinter.CENTER)
 consulta = tk.CTkButton(master = app, text="Consultar numero con nombre", command = consultar)
 consulta.place(relx=0.5, rely=0.2, anchor=tkinter.CENTER)
 
-nuevonumero = tk.CTkButton(master = app, text="Agregar numero", command = newnumero)
+nuevonumero = tk.CTkButton(master = app, text="Agregar numero", command = nuevonumero)
 nuevonumero.place(relx=0.5, rely=0.3, anchor=tkinter.CENTER)
 
-borrarnumero = tk.CTkButton(master = app, text="Borrar numero", command = deletenumero)
+borrarnumero = tk.CTkButton(master = app, text="Borrar numero", command = borrar)
 borrarnumero.place(relx=0.5, rely=0.4, anchor=tkinter.CENTER)
 
 #EJECUTAR APLICACION
