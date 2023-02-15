@@ -3,8 +3,7 @@ import tkinter
 import customtkinter as tk
 
 #DECLARACION DE VARIABLE FILE
-file = "00CustomTKinter/app/listin.txt"
-
+file = "python_aprendeconalf/00CustomTKinter/app/listin.txt"
 #APLICACION TKINTER
 #COLORES
 tk.set_appearance_mode("dark")
